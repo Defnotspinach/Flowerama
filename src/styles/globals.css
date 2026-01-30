@@ -1,0 +1,379 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: #000;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #7cb342;
+  --accent-glow: rgba(124, 179, 66, 0.3);
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Name Entry Screen */
+.name-entry-container {
+  text-align: center;
+  max-width: 400px;
+  padding: 2rem;
+  animation: fadeIn 1s var(--transition-smooth);
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+.name-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.name-label {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
+.name-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  text-align: center;
+  transition: all 0.3s var(--transition-smooth);
+  outline: none;
+}
+
+.name-input:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.name-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.start-button {
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+  outline: none;
+}
+
+.start-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+.start-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.start-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.start-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Main Scene */
+.flower-scene {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 1.5s var(--transition-smooth);
+}
+
+.instruction {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Completion Screen */
+.completion-container {
+  text-align: center;
+  animation: fadeIn 2s var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.completion-title {
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.completion-message {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Restart Button */
+.restart-button {
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+  outline: none;
+  margin-top: 2rem;
+}
+
+.restart-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+.restart-button:active {
+  transform: translateY(0);
+}
+
+.restart-button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive Design */
+/* Tablets and smaller */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+
+  .name-entry-container {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .completion-title {
+    font-size: 1.5rem;
+  }
+
+  .completion-message {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .instruction {
+    bottom: 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  html,
+  body {
+    overflow: auto;
+  }
+
+  .app {
+    min-height: 100vh;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .name-input,
+  .start-button,
+  .restart-button {
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .completion-title {
+    font-size: 1.3rem;
+    padding: 0 1rem;
+  }
+
+  .completion-message {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .instruction {
+    bottom: 1rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) and (pointer: coarse) {
+  .start-button,
+  .restart-button {
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .start-button:hover,
+  .restart-button:hover {
+    transform: none;
+  }
+
+  .start-button:active:not(:disabled),
+  .restart-button:active {
+    transform: scale(0.98);
+    background: #6fa336;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  .app {
+    overflow-y: auto;
+  }
+
+  .flower-scene {
+    transform: scale(0.8);
+  }
+
+  .instruction {
+    bottom: 0.5rem;
+  }
+}

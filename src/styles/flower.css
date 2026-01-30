@@ -1,0 +1,297 @@
+.flower-container {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.flower-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  position: relative;
+  z-index: 2;
+}
+
+/* Growth stage animations */
+.stage-seed {
+  animation: seedPop 0.6s var(--transition-smooth);
+}
+
+.stage-sprout {
+  animation: sproutGrow 1s var(--transition-smooth);
+}
+
+.stage-stem {
+  animation: stemRise 1.2s var(--transition-smooth);
+}
+
+.stage-bud {
+  animation: budForm 1s var(--transition-smooth);
+}
+
+.stage-bloom {
+  animation: bloomOpen 2s var(--transition-smooth);
+}
+
+/* Water drops animation */
+.water-drops {
+  animation: waterFall 0.8s ease-in;
+}
+
+.drop {
+  opacity: 0;
+  animation: dropFall 0.8s ease-in forwards;
+}
+
+.drop-1 {
+  animation-delay: 0s;
+}
+
+.drop-2 {
+  animation-delay: 0.1s;
+}
+
+.drop-3 {
+  animation-delay: 0.05s;
+}
+
+/* Bloom animations */
+.bloomed .stage-bloom {
+  animation: bloomPulse 3s ease-in-out infinite;
+}
+
+.bloom-glow {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.petals {
+  transform-origin: 100px 110px;
+  animation: tulipSway 4s ease-in-out infinite;
+}
+
+.petal {
+  animation: petalGentle 6s ease-in-out infinite;
+}
+
+.petal-1 { animation-delay: 0s; }
+.petal-2 { animation-delay: 0.3s; }
+.petal-3 { animation-delay: 0.6s; }
+.petal-4 { animation-delay: 0.9s; }
+.petal-back { animation-delay: 0.1s; }
+
+.flower-center {
+  animation: centerGlow 2s ease-in-out infinite;
+}
+
+/* Progress Ring */
+.progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.progress-ring-progress {
+  transition: stroke-dashoffset 0.8s var(--transition-smooth),
+              opacity 0.3s ease;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+/* Keyframe definitions */
+@keyframes seedPop {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes sproutGrow {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stemRise {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes budForm {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bloomOpen {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-20deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes dropFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(220px);
+  }
+}
+
+@keyframes waterFall {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bloomPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes tulipSway {
+  0%, 100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes petalGentle {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes centerGlow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.3);
+  }
+}
+
+/* Accessibility: Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .stage-seed,
+  .stage-sprout,
+  .stage-stem,
+  .stage-bud,
+  .stage-bloom {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .bloomed .stage-bloom,
+  .bloom-glow,
+  .petals,
+  .petal,
+  .flower-center {
+    animation: none;
+  }
+
+  .drop {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* Responsive Design for Flower */
+@media (max-width: 768px) {
+  .flower-container {
+    width: 250px;
+    height: 350px;
+  }
+
+  .progress-ring {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flower-container {
+    width: 200px;
+    height: 300px;
+  }
+
+  .progress-ring {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 896px) and (orientation: landscape) {
+  .flower-container {
+    width: 220px;
+    height: 280px;
+  }
+
+  .progress-ring {
+    width: 220px;
+    height: 220px;
+  }
+}
