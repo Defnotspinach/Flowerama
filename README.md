@@ -6,7 +6,8 @@ An interactive, calming flower growth experience built with **React** and **Vite
 
 ## **Demo**
 
-.[flowerama.netlify.app]
+[Link Text](flowerama.netlify.app)
+
 
 ---
 
@@ -51,6 +52,7 @@ An interactive, calming flower growth experience built with **React** and **Vite
 ---
 
 ## **Project Structure**
+
 
 
 
